@@ -5,7 +5,7 @@ function CategoriesList({ passingToButton }) {
 	return (
 		<div>
 			{categories.map((category) => (
-				<button className="categories" key={category} onClick={() => passingToButton([category])}>
+				<button className="categories" key={category} onClick={passingToButton}>
 					{category}
 				</button>
 			))}
