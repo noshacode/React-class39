@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import categories from "../fake-data/all-categories";
 
-function CategoriesList({ passingToButton }) {
+function CategoriesList({ passingToButton, selectedCategory }) {
 	return (
 		<div>
 			{categories.map((category) => (
-				<button className="categories" key={category} onClick={passingToButton}>
+				<button
+					className={`categories ${
+						category === selectedCategory ? "active" : ""
+					}`}
+					key={category}
+					onClick={passingToButton}
+				>
 					{category}
 				</button>
 			))}

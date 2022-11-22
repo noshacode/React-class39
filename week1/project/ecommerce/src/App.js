@@ -16,7 +16,10 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<CategoriesList passingToButton={clickHandler} />
+			<CategoriesList
+				passingToButton={clickHandler}
+				selectedCategory={category}
+			/>
 			<ProductList selectedCategory={category} />
 		</div>
 	);
