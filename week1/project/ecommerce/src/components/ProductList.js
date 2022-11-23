@@ -3,9 +3,9 @@ import Product from "./Product";
 import list from "../fake-data/all-products";
 
 function ProductList({ selectedCategory }) {
-	let filteredList = list.filter((item) =>
-		selectedCategory.includes(item.category)
-	);
+	let filteredList = selectedCategory
+		? list.filter((item) => selectedCategory === item.category)
+		: list;
 
 	return (
 		<div className="products">

@@ -6,7 +6,7 @@ import ProductList from "./components/ProductList";
 import categories from "./fake-data/all-categories";
 
 function App() {
-	const [category, setCategory] = useState(categories);
+	const [category, setCategory] = useState("");
 
 	function clickHandler(e) {
 		console.log("button clicked", e.target.textContent);
