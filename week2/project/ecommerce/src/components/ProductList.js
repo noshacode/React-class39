@@ -1,15 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { fetchData } from "../api";
 import Product from "./Product";
-import list from "../fake-data/all-products";
 
 function ProductList({ selectedCategory }) {
-	let filteredList = selectedCategory
-		? list.filter((item) => selectedCategory === item.category)
-		: list;
+	const [data, setData] = useState([]);
+	const [error, setError] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
+	const PRODUCT_URL = "https://fakestoreapi.com/products";
+	const PRODUCT_CATEGORY_URL = `https://fakestoreapi.com/products/category/${selectedCategory}`;
+
+	const getData = async () => {
+		try {
+			const url = selectedCategory ? PRODUCT_CATEGORY_URL : PRODUCT_URL;
+			const data = await fetchData(url);
+			setData(data);
+		} catch (e) {
+			setError(e.message);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+	useEffect(() => {
+		setError("");
+		getData();
+	}, [selectedCategory]);
+
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
+
+	if (error) {
+		return <div>An error happened, please refresh the page.</div>;
+	}
 	return (
 		<div className="products">
-			{filteredList.map((item) => (
+			{data.map((item) => (
 				<Product key={item.id} item={item} />
 			))}
 		</div>
