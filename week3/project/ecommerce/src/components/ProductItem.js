@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { fetchData } from "../api";
 import { useParams } from "react-router-dom";
-import heartSolid from "../assets/heart-solid.svg";
-import heartRegular from "../assets/heart-regular.svg";
 import FavButton from "./FavButton";
 
-function ProductItem() {
+function ProductItem(props) {
 	const { id } = useParams();
 	const [data, setData] = useState([]);
 	const [error, setError] = useState(false);
@@ -13,7 +11,8 @@ function ProductItem() {
 
 	useEffect(() => {
 		setError("");
-		const PRODUCT_URL = `https://fakestoreapi.com/products/${id}`;
+		let productId = id || props.propId;
+		const PRODUCT_URL = `https://fakestoreapi.com/products/${productId}`;
 		const getData = async () => {
 			try {
 				const data = await fetchData(PRODUCT_URL);

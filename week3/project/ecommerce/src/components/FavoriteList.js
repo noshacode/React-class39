@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FavoritesContext } from "../FavoritesContext";
+import ProductItem from "./ProductItem";
 
 function FavoriteList() {
 	const [fav, setFav] = useContext(FavoritesContext);
@@ -7,8 +8,10 @@ function FavoriteList() {
 	return (
 		<div>
 			<h1>Favorites</h1>
-			{fav.map((favItem) => (
-				<div key={favItem}>{favItem}</div>
+			{fav.map((favId) => (
+				<div key={favId}>
+					<ProductItem propId={favId} />
+				</div>
 			))}
 		</div>
 	);
