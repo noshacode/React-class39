@@ -11,8 +11,10 @@ function ProductItem(props) {
 
 	useEffect(() => {
 		setError("");
-		let productId = id || props.propId;
-		const PRODUCT_URL = `https://fakestoreapi.com/products/${productId}`;
+
+		const PRODUCT_URL = `https://fakestoreapi.com/products/${
+			id || props.propId
+		}`;
 		const getData = async () => {
 			try {
 				const data = await fetchData(PRODUCT_URL);
