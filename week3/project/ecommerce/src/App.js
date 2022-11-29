@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import CategoriesList from "./components/CategoriesList";
-import Header from "./components/Header";
+
 import ProductList from "./components/ProductList";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header />
+			<h1>Products</h1>
 			<CategoriesList
 				passingToButton={clickHandler}
 				selectedCategory={category}

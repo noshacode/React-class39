@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 function Header() {
 	return (
 		<div>
-			<h1>Products</h1>
 			<div className="header">
 				<Link className="header1" to="/">
 					product

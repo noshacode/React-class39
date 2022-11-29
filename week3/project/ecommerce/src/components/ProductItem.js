@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { fetchData } from "../api";
 import { useParams } from "react-router-dom";
+import heartSolid from "../assets/heart-solid.svg";
+import heartRegular from "../assets/heart-regular.svg";
+import FavButton from "./FavButton";
 
 function ProductItem() {
 	const { id } = useParams();
@@ -39,6 +42,7 @@ function ProductItem() {
 			<img className="product-image" src={data.image} alt={data.title} />
 			<p>{data.description}</p>
 			<p>Price - {data.price}</p>
+			<FavButton item={data} />
 		</div>
 	);
 }
