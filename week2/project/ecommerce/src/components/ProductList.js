@@ -10,22 +10,21 @@ function ProductList({ selectedCategory }) {
 	const PRODUCT_URL = "https://fakestoreapi.com/products";
 	const PRODUCT_CATEGORY_URL = `https://fakestoreapi.com/products/category/${selectedCategory}`;
 
-	const getData = async () => {
-		try {
-			const url = selectedCategory ? PRODUCT_CATEGORY_URL : PRODUCT_URL;
-			const data = await fetchData(url);
-			setData(data);
-		} catch (e) {
-			setError(e.message);
-		} finally {
-			setIsLoading(false);
-		}
-	};
-
 	useEffect(() => {
+		const getData = async () => {
+			try {
+				const url = selectedCategory ? PRODUCT_CATEGORY_URL : PRODUCT_URL;
+				const data = await fetchData(url);
+				setData(data);
+			} catch (e) {
+				setError(e.message);
+			} finally {
+				setIsLoading(false);
+			}
+		};
 		setError("");
 		getData();
-	}, [selectedCategory]);
+	}, [selectedCategory, PRODUCT_CATEGORY_URL]);
 
 	if (isLoading) {
 		return <div>Loading...</div>;

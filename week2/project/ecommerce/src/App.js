@@ -8,7 +8,6 @@ function App() {
 	const [category, setCategory] = useState("");
 
 	function clickHandler(e) {
-		console.log("button clicked", e.target.textContent);
 		setCategory(e.target.textContent);
 	}
 

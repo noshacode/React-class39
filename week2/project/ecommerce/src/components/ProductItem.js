@@ -8,23 +8,22 @@ function ProductItem() {
 	const [error, setError] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
-	const PRODUCT_URL = `https://fakestoreapi.com/products/${id}`;
-
-	const getData = async () => {
-		try {
-			const data = await fetchData(PRODUCT_URL);
-			setData(data);
-		} catch (e) {
-			setError(e.message);
-		} finally {
-			setIsLoading(false);
-		}
-	};
-
 	useEffect(() => {
+		const PRODUCT_URL = `https://fakestoreapi.com/products/${id}`;
+
+		const getData = async () => {
+			try {
+				const data = await fetchData(PRODUCT_URL);
+				setData(data);
+			} catch (e) {
+				setError(e.message);
+			} finally {
+				setIsLoading(false);
+			}
+		};
 		setError("");
 		getData();
-	}, []);
+	}, [id]);
 
 	if (isLoading) {
 		return <div>Loading...</div>;
